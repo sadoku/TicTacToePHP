@@ -1,3 +1,8 @@
+<html>
+<head>
+    <title>Great Quotes from Great People</title>
+</head>
+<body>
 <?php
     $fileName = "message.txt";
     $file = fopen($fileName,'a+');
@@ -11,4 +16,5 @@
     fclose($file);
 ?>
 
-
+</body>
+</html>
