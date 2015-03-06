@@ -59,7 +59,7 @@ class tictactoe{
 	}
 	public function __toString(){
 		if (!$this->isDone){
-			echo "<table>";
+			echo "<table><div class='table'>";
 			for ($x = 0; $x < 9; $x++) {
 				if ($x == 3 || $x == 6) {
 					echo "</tr>";
@@ -72,20 +72,25 @@ class tictactoe{
 					echo "<td><img src='img/$img.jpg' alt='$img' title='$img' /></td>";
 				} else {
 					//It's not? Let them choose this position
-					echo "<td><input type='radio' name='cords' value='{$x}'></input></td>";
+					echo "<td><button type='submit' method='post' name='cords' value='{$x}'></button><style>button:hover {background-image: url('img/$this->player.jpg')}</style></td>";
 				}
 			}
-			return "</table><p><input type='submit' name='move' value='Submit' /><br/>It's player {$this->player}'s turn.</p>";
+            return "</table></div>";
 		} else {
 			//Decide if there was a winner or not.
 			if ($this->checkGame() != "Tie") {
-				echo $this->checkGame() . " has won the match!";
+                if ($this->checkGame() == "O") {
+                    echo "<h2>Al Gore has won the match!</h2><br /><img src='img/alGore.jpg'>";
+                }
+                else {
+                    echo "<h2>Manbearpig has won the match!</h2><br /><img src='img/mbp.jpg'>";
+                }
 			} elseif ($this->checkGame() == "Tie") {
-				echo "TIED MATCH";
+				echo "<h2>TIED MATCH</h2>";
 			} else {
 				echo "Something went wrong....";
 			}
-			return "<input type='submit' name='newgame' value='New Game' />";
+			return "<br /><input type='submit' name='newgame' value='New Game' />";
 		}
 	}
 }
